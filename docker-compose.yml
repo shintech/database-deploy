@@ -2,16 +2,17 @@ version: '2'
 
 services:
   postgres:
-    build: .
     image: shintech/database
     container_name: postgres
-    networks:
-      default:
-        ipv4_address: 192.168.0.8
+    env_file:
+      - ./db.env    
     volumes: 
       - ./data/db:/var/lib/postgresql/data
     restart: always
-networks:
-  default:
-    external:
-      name: shintech  
+#     networks:
+#       default:
+#         ipv4_address: 192.168.0.8
+# networks:
+#   default:
+#     external:
+#       name: shintech  
